@@ -32,7 +32,7 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Gemini Girl's Birthday",
-  description: "An interactive, playful birthday website for a classmate and Gemini girl.",
+  description: "R",
 };
 
 export default function RootLayout({
