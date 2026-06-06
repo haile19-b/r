@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #09090b;
+  --foreground: #fafafa;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --font-sans: var(--font-outfit), var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-handwritten: var(--font-architects-daughter), cursive;
+  --font-serif: var(--font-playfair-display), serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float-delayed 7s ease-in-out infinite;
+  --animate-wiggle-custom: wiggle-custom 1s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --animate-draw-line: draw-line 2s ease-out forwards;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(10px) rotate(-2deg); }
+  }
+  @keyframes wiggle-custom {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.03); }
+  }
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
 }
+
+/* Custom Notebook Linings */
+.notebook-lines {
+  background-image: linear-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+  background-size: 100% 1.75rem;
+  line-height: 1.75rem;
+}
+
+/* Simulated Coffee Stain effect */
+.coffee-stain {
+  background: radial-gradient(circle, rgba(139, 90, 43, 0.15) 0%, rgba(139, 90, 43, 0.03) 50%, transparent 70%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  filter: blur(4px);
+}
+
+.coffee-ring {
+  border: 3px double rgba(139, 90, 43, 0.12);
+  border-radius: 50% 48% 52% 49% / 51% 49% 51% 49%;
+  transform: rotate(-15deg);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* Highlight styling */
+.highlight-yellow {
+  background: linear-gradient(104deg, rgba(254, 240, 138, 0.75) 0.9%, rgba(254, 240, 138, 0.4) 95%);
+  padding: 0.15em 0.3em;
+  border-radius: 20% 5% 20% 5% / 5% 20% 5% 20%;
+  box-decoration-break: clone;
+}
+
+.highlight-pink {
+  background: linear-gradient(104deg, rgba(244, 63, 94, 0.3) 0.9%, rgba(244, 63, 94, 0.15) 95%);
+  padding: 0.15em 0.3em;
+  border-radius: 10% 20% 10% 20% / 20% 10% 20% 10%;
+  box-decoration-break: clone;
+}
+
